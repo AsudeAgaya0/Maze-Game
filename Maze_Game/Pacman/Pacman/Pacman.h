@@ -1,0 +1,125 @@
+//-----------------------------------------------------------------
+// Fore 2 Application
+// C++ Header - Fore.h
+//-----------------------------------------------------------------
+
+#pragma once
+
+//-----------------------------------------------------------------
+// Include Files
+//-----------------------------------------------------------------
+#include <windows.h>
+#include "resource.h"
+#include "GameEngine.h"
+#include "Background.h"
+#include "GhostSprite.h"
+#include "Bitmap.h"
+#include "Sprite.h"
+#include <stack>
+#include <queue>
+
+class coord {
+public:
+	int x;
+	int y;
+	int dist;
+	coord* prev;
+
+public:
+	coord(int x, int y) {
+		this->x = x;
+		this->y = y;
+		dist = 0;
+		prev = NULL;
+	}
+	coord(int x, int y, int dist, coord* prev) {
+		this->x = x;
+		this->y = y;
+		this->dist = dist;
+		this->prev = prev;
+	}
+};
+
+int distance(coord* c1, coord* c2);
+void addWall(int** pam, int index);
+int findPathBFS(coord* c1, coord* c2, int** map, int naxrow, int  maxcol, int empty, coord** path);
+
+int pacmanLoc;//0 or 1
+int ghostLoc = 0;//0 or 1
+coord** path;
+int maxrow = 25, maxcol = 25;
+int** tempMaze;
+int** maze;
+int** map1;
+int** map2;
+int** maze1;
+int** maze2;
+int maze3d[2][25][25];
+int maxwall = 120, wall;
+
+coord* c1 = new coord(-1, -1), * c2 = new coord(-1, -1);
+
+//-----------------------------------------------------------------
+// Global Variables
+//-----------------------------------------------------------------
+HINSTANCE   _hInstance;
+GameEngine* _pGame;
+HDC         _hOffscreenDC;
+HBITMAP     _hOffscreenBitmap;
+Bitmap*		_pDoorBitmap;
+Bitmap*		_pWallBitmap;
+Bitmap*		_pPortalBitmap;
+Bitmap*     _pPacmanBitmap;
+Bitmap*     _pDotBitmap;
+Bitmap*     _pWizardBitmap;
+Bitmap*     _pSmDotBitmap;
+Bitmap*     _pIceGunBitmap;
+Bitmap*     _pLgExplosionBitmap;
+Bitmap*     _pGhostBitmap;
+Sprite*     _pPacManSprite;
+Sprite*     _pGhostSpriteR;
+BOOL        _bGameOver;
+BOOL        _bGhostDead;
+Background* _pBackground;
+int         _iNumLives, _iScore, _iDifficulty;
+int			_iNumKeys;
+int			_iDirection; //0:left 1:right 2:top 3:buttom
+
+int _iWizardhat;
+int _iKeyScore;
+const int numGhost = 6;
+const int numGhostXY = 3;
+const int numMine = 2;
+const int numBoost = 6;
+
+Bitmap* _pHeartBitmap;
+Bitmap* _pWizardHatBitmap;
+Bitmap* _pKeyScoreBitmap;
+Bitmap* _pLiveBoostBitmap;
+Bitmap* _pGhost1Bitmap;
+Sprite* _pGhost1Sprite;
+Bitmap* _pCandyBitmap;
+Sprite* _pCandySprite;
+
+Sprite* ghostSprites[numGhost];
+Sprite* ghostSpritesXY[numGhostXY];
+Sprite* boostSprites[numBoost];
+Sprite* mineSprites[numMine];
+
+Bitmap* _pMineBitmap;
+Sprite* _pMineSprite;
+
+
+int ghostLocs[numGhost];
+int ghostLocsXY[numGhostXY];
+int mineLocs[numMine];
+
+void GhostMoveXY( Sprite* pPacSprite, Sprite* ghostSprites[]);
+void MineBoostMoveXY(Sprite* pMineSprites[], Sprite* pPacSprite);
+void AddBoost();
+void AddMine();
+
+void NewGame();
+void AddGhost();
+void GhostMove(Sprite* ghostSprites[]);
+int gametime = 0;

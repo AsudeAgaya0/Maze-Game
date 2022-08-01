@@ -1,0 +1,39 @@
+//-----------------------------------------------------------------
+// Fore Resources
+// RC Source - Fore.rc
+//-----------------------------------------------------------------
+
+//-----------------------------------------------------------------
+// Include Files
+//-----------------------------------------------------------------
+#include "resource.h"
+
+//-----------------------------------------------------------------
+// Icons
+//-----------------------------------------------------------------
+IDI_PACMAN           ICON         "Pacman.ico"
+IDI_PACMAN_SM        ICON         "Pacman_sm.ico"
+
+//-----------------------------------------------------------------
+// Bitmaps
+//-----------------------------------------------------------------
+IDB_DOOR           BITMAP       "door.bmp"
+IDB_WALL           BITMAP       "wall.bmp"
+IDB_PORTAL         BITMAP       "portal.bmp"
+IDB_PACMAN         BITMAP       "pacman.bmp"
+IDB_DOT            BITMAP       "key.bmp"
+IDB_SM_DOT         BITMAP       "small_dot.bmp"
+IDB_ICE_GUN        BITMAP       "ice_gun.bmp"
+IDB_GHOST          BITMAP       "ghost.bmp"
+IDB_WIZARD         BITMAP       "white.bmp"
+IDB_LGEXPLOSION    BITMAP       "LgExplosion.bmp"
+
+IDB_HEART		   BITMAP		"heart.bmp"
+IDB_WIZARDHAT	   BITMAP		"wizard_hat.bmp"
+IDB_KEYSCORE	   BITMAP		"green_key.bmp"
+IDB_BOOST		   BITMAP		"boost.bmp"
+
+IDB_GHOST1			BITMAP		"ghost1.bmp"
+IDB_CANDY			BITMAP		"candyboost.bmp"
+
+
